@@ -1,0 +1,51 @@
+# Environment setup
+# how to install the Azure DevOps PowerShell module:
+
+Install-Module -Name AzureDevOps
+
+
+
+
+
+# Authentication
+# how to authenticate to Azure DevOps:
+
+$personalAccessToken = "<Your PAT>"
+$organizationUrl = "https://dev.azure.com/<YourOrganization>"
+$connection = Connect-AzDevOps -Organization $organizationUrl -PersonalAccessToken $personalAccessToken
+
+
+
+
+
+# Creating a New Azure DevOps Project
+#Use PowerShell to create a new project
+
+New-AzDevOpsProject -Name "MyNewProject" -Visibility "private"
+
+
+
+
+
+#creating a CI/CD pipeline
+# how to create a new pipeline using a YAML file:
+
+New-AzDevOpsPipeline -ProjectName "MyNewProject" -PipelineName "MyPipeline" -YAMLPath "path/to/azure-pipelines.yml"
+
+
+
+
+
+#Triggering a Build
+# how to trigger a build using PowerShell:
+
+Start-AzDevOpsBuild -ProjectName "MyNewProject" -PipelineName "MyPipeline"
+
+
+
+
+
+#Monitoring Build Status
+#How to check the status of the build:
+
+Get-AzDevOpsBuild -ProjectName "MyNewProject" -PipelineName "MyPipeline"
